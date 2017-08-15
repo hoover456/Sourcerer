@@ -1,23 +1,27 @@
-import java.util.ArrayList;
-
+import java.text.ParseException;
+import java.util.Date;
+import java.text.DateFormat;
 /**
  * Created by Andrew on 8/13/2017.
  *
  * Article object
  */
 public class Article {
-    private String url;
-    private String domain;
-    private String body;
-    private String date;
-    private String author;
-    public int[] test = new int[3];
+    private String url; // URL article is found at
+    private String domain; // Domain of website eg. cnn.com
+    private String body; // Full text of the article
+    private Date pubDate; // Date and time the article was published
+    private String author; // Author of the article
 
     public Article(String url, String domain, String body, String date, String author) {
         this.url = url;
         this.domain = domain;
         this.body = body;
-        this.date = date;
+        try {
+            this.pubDate = DateFormat.getDateTimeInstance().parse(date);
+        } catch (ParseException e) {
+            this.pubDate = null;
+        }
         this.author = author;
     }
 
@@ -45,12 +49,12 @@ public class Article {
         this.body = body;
     }
 
-    public String getDate() {
-        return date;
+    public Date getPubDate() {
+        return pubDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
     }
 
     public String getAuthor() {
