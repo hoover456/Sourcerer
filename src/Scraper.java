@@ -25,7 +25,7 @@ public class Scraper {
         }
 
         try {
-            p.parse(doc, URL, getDomainName(URL));
+            Parser.parse(doc, URL, getDomainName(URL));
         } catch (URISyntaxException e) {
             e.printStackTrace(); // Thrown if java.net.URI can't extract the domain from the URL. Unlikely to be reached because JSoup.connect() comes first in program
         }
